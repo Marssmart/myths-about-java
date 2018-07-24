@@ -1,1 +1,1 @@
-start "Java 10 memory benchmark - Base" "%JAVA10_HOME%\bin\java" -jar ..\..\..\..\target\memory-benchmark.jar
+start "Java 10 memory benchmark - Base" "%JAVA10_HOME%\bin\java" --module-path ..\..\..\..\target\memory-benchmark.jar --module java.ten.memory.consumption/org.deer.java10.memory.consumption.Java10Runner

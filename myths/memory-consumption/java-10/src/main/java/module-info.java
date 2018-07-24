@@ -1,3 +1,3 @@
-module java10.memory.consumption {
+module java.ten.memory.consumption {
 
 }
