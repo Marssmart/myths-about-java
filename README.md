@@ -7,7 +7,7 @@ This project was started out of the frustration with "native" developers bitchin
 
 Default start params 
 
-![Java 8 - Footprint - Base](https://github.com/Marssmart/myths-about-java/raw/master/src/main/resources/images/footprint_base.jpg "Java 8 - Footprint - Base")
+![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8/src/main/resources/images/footprint_base.jpg "")
 
 #### Java 10
 
