@@ -12,5 +12,6 @@
 
   <modules>
     <module>myths/memory-consumption/java-8</module>
+    <module>myths/memory-consumption/java-8-spring-rest-only</module>
   </modules>
 </project>
