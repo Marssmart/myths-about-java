@@ -12,6 +12,5 @@
 
   <modules>
     <module>myths/memory-consumption/java-8</module>
-    <module>myths/memory-consumption/java-10</module>
   </modules>
 </project>

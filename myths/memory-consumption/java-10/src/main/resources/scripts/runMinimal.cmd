@@ -1,1 +1,0 @@
-start "Java 10 memory benchmark - Minimal" "%JAVA10_HOME%\bin\java" -jar -Xms1m -Xmx2m  -XX:MaxMetaspaceSize=9m -XX:+UseSerialGC -XX:+UseStringDeduplication --module-path ..\..\..\..\target\memory-benchmark.jar --module java.ten.memory.consumption/org.deer.java10.memory.consumption.Java10Runner
