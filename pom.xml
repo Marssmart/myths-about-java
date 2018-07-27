@@ -14,5 +14,6 @@
     <module>myths/memory-consumption/java-8</module>
     <module>myths/memory-consumption/java-8-spring-rest-only</module>
     <module>myths/memory-consumption/java-8-google-juice</module>
+    <module>simulators/simulator-rest</module>
   </modules>
 </project>

@@ -30,6 +30,32 @@ Minimal params(-Xms1m -Xmx2m  -XX:MaxMetaspaceSize=9m -XX:+UseSerialGC -XX:+UseS
 
 ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8/src/main/resources/images/footprint_minimal.jpg "")
 
+Sustainable params(-XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=38m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
+
+This is more realistic use case where the running application can withstand permanent load from
+10 threads like so:
+
+```java
+
+private static class LoadSimulator extends Thread {
+
+    @Override
+    public void run() {
+      final String threadName = Thread.currentThread().getName();
+      while (true) {
+        try {
+          Unirest.post("http://localhost:9548/greeting").asJson();
+        } catch (Exception e) {
+          System.out.println(format("%s - request failed", threadName));
+        }
+      }
+    }
+  }
+
+```
+
+![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8/src/main/resources/images/footprint_sustainable.jpg "")
+
 ### Spring Rest
 
 Runs spring boot application with simple handler 

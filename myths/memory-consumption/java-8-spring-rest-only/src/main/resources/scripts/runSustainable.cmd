@@ -1,0 +1,1 @@
+start "Java 8 Spring memory benchmark - Sustainable" "%JAVA8_HOME%\bin\java" -jar -XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=38m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication  ..\..\..\..\target\spring-memory-benchmark.jar
