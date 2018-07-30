@@ -28,6 +28,14 @@ Default start params
 
 Minimal params(-Xms1m -Xmx2m  -XX:MaxMetaspaceSize=9m -XX:+UseSerialGC -XX:+UseStringDeduplication)
 
+|Param|Description|
+|-----|-----------|
+| -Xms1m / -Xmx2m|This is the first pick in any kind of memory optimization, as the jvm does not hold back as far as heap memory consumption if you don't specify boundaries|
+| -XX:MaxMetaspaceSize=9m|Same story as with heap memory, it contains class metadata, and specialy when using big frameworks, this makes significant change in memory |
+| -XX:+UseSerialGC|The least-memory hungry garbage collector, in this case ~0.5 MB less than Parallel GC|
+| -XX:+UseStringDeduplication|Also shaves down ~0.5 MB, but be careful with this setting can be contra-productive in use-cases where your strings have short lifespan or you don't have much duplicates |
+
+
 ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8/src/main/resources/images/footprint_minimal.jpg "")
 
 ### Spring Rest
@@ -62,11 +70,16 @@ Default start params
 
 ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8-spring-rest-only/src/main/resources/images/footprint_base.jpg "")
 
-Minimal params(-XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
+Minimal params(-Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
+
+|Param|Description|
+|-----|-----------|
+|-XX:-UseCompressedClassPointers| Spring uses a lot of classes, and byte-code manipulation which adds additional bytecode, which further increases class metadata like methods,etc|
+|-XX:+ScavengeBeforeFullGC| Instructs GC to collect young generation before doing full GC. This helps getting rid of short-term objects that are created at startup |
 
 ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8-spring-rest-only/src/main/resources/images/footprint_minimal.jpg "")
 
-Sustainable params(-XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=38m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
+Sustainable params(-Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=38m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
 
 This is more realistic use case where the running application can withstand permanent load from
 10 threads like so:
@@ -89,6 +102,10 @@ private static class LoadSimulator extends Thread {
   }
 
 ```
+
+|Param|Description|
+|-----|-----------|
+
 
 ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8-spring-rest-only/src/main/resources/images/footprint_sustainable.jpg "")
 
@@ -122,6 +139,6 @@ Runs Google juice DI in simplistic example
  
  ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8-google-juice/src/main/resources/images/footprint_base.jpg "")
  
- Minimal params(-XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
+ Minimal params(-Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication)
  
  ![alt ](https://raw.githubusercontent.com/Marssmart/myths-about-java/master/myths/memory-consumption/java-8-google-juice/src/main/resources/images/footprint_minimal.jpg "")
