@@ -1,1 +1,1 @@
-start "Java 8 Spring memory benchmark - Minimal" "%JAVA8_HOME%\bin\java" -jar -XX:+AggressiveOpts -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication  ..\..\..\..\target\spring-memory-benchmark.jar
+start "Java 8 Spring memory benchmark - Minimal" "%JAVA8_HOME%\bin\java" -jar -Xms1m -Xmx18m -XX:-UseCompressedClassPointers -XX:MaxMetaspaceSize=36m -XX:+ScavengeBeforeFullGC -XX:+UseSerialGC -XX:+UseStringDeduplication  ..\..\..\..\target\spring-memory-benchmark.jar
